@@ -1,0 +1,134 @@
+/* Moi dans 5 ans — feuille de style. Les jetons de la charte commune sont recopiés ci-dessous par apps/charte/synchroniser.py. */
+/* ===== jetons communs : début (copie de apps/charte/jetons.css — ne pas modifier ici) ===== */
+/* ===== Jetons communs — LIFE, Coulisses, Tri Instagram (charte du 13/10/2026, audit design) =====
+   Source unique : apps/charte/jetons.css. Chaque app en garde une COPIE IDENTIQUE en tête de sa feuille de style,
+   entre les deux lignes « jetons communs » ; la recopier avec : python3 apps/charte/synchroniser.py
+   (tests/test_charte_apps.py vérifie que les trois copies sont identiques à la source et que les contrastes tiennent).
+   Polices : deux familles, hébergées avec chaque app (dossier fonts/ à côté de la page, licence SIL OFL 1.1) :
+   aucun appel à un tiers. Instrument Sans (titres, texte long) est une police variable : une seule déclaration.
+   Jour par défaut ; nuit par le réglage de l'appareil, ou forcée avec data-theme="nuit" (data-theme="jour" force le jour). */
+@font-face { font-family: 'Instrument Sans'; font-style: normal; font-weight: 400 700; font-display: swap; src: url(fonts/instrument-sans.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'IBM Plex Mono'; font-style: normal; font-weight: 400; font-display: swap; src: url(fonts/plex-mono-400.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'IBM Plex Mono'; font-style: italic; font-weight: 400; font-display: swap; src: url(fonts/plex-mono-400-italique.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'IBM Plex Mono'; font-style: normal; font-weight: 500; font-display: swap; src: url(fonts/plex-mono-500.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'IBM Plex Mono'; font-style: normal; font-weight: 600; font-display: swap; src: url(fonts/plex-mono-600.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'IBM Plex Mono'; font-style: normal; font-weight: 700; font-display: swap; src: url(fonts/plex-mono-700.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+:root {
+  /* couleurs : fond crème, encre bleu Klein (contrastes : tests/test_charte_apps.py) */
+  --fond: #F5EEE2; --plateau: #FAF5EC; --surface: #FEFAF3;
+  --encre: #002FA7; --encre-2: #4768BD; --texte: #14204A;
+  --trait: #002FA7; --trait-doux: #6F86C6; --pale: #DBE3F3; --ombre: #C9D6F0;
+  --plein: #002FA7; --sur-plein: #FDFAF4;
+  /* états : toujours doublés d'une forme ou d'un mot (jamais la couleur seule) */
+  --ok: #186E48; --veille: #925500; --panne: #B42A35; --neutre: #6F7896;
+  /* typographie : deux familles, sept tailles */
+  --display: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --t-xs: 12px; --t-s: 13px; --t-m: 14.5px; --t-l: 16px; --t-xl: 18px; --t-2xl: 22px; --t-3xl: 28px;
+  /* espace (grille de 4) */
+  --e-1: 4px; --e-2: 8px; --e-3: 12px; --e-4: 16px; --e-5: 24px; --e-6: 32px;
+  /* formes : trait de 1,5 px, ombres décalées sans flou */
+  --r-s: 8px; --r-m: 14px; --r-l: 24px; --r-p: 999px;
+  --trait-l: 1.5px;
+  --sh-1: 2px 2px 0 var(--ombre); --sh-2: 4px 4px 0 var(--ombre); --sh-3: 4px 4px 0 var(--encre);
+  --cible: 44px;
+  color-scheme: light;
+}
+:root[data-theme="nuit"] {
+  --fond: #0E1830; --plateau: #122041; --surface: #172A52;
+  --encre: #E3EAFF; --encre-2: #9AABD4; --texte: #E3EAFF;
+  --trait: #93B3F0; --trait-doux: #6A80B8; --pale: #29447F; --ombre: #070F22;
+  --plein: #93B3F0; --sur-plein: #0E1830;
+  --ok: #4CC88E; --veille: #F0A93B; --panne: #FF858D; --neutre: #8F9AC0;
+  --sh-3: 4px 4px 0 #2F55D4;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="jour"]) {
+    --fond: #0E1830; --plateau: #122041; --surface: #172A52;
+    --encre: #E3EAFF; --encre-2: #9AABD4; --texte: #E3EAFF;
+    --trait: #93B3F0; --trait-doux: #6A80B8; --pale: #29447F; --ombre: #070F22;
+    --plein: #93B3F0; --sur-plein: #0E1830;
+    --ok: #4CC88E; --veille: #F0A93B; --panne: #FF858D; --neutre: #8F9AC0;
+    --sh-3: 4px 4px 0 #2F55D4;
+    color-scheme: dark;
+  }
+}
+/* ===== jetons communs : fin ===== */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body { display: flex; flex-direction: column; background: var(--fond); color: var(--texte); font: var(--t-l)/1.5 var(--display); -webkit-text-size-adjust: 100%; }
+h1, h2, h3 { font-family: var(--display); color: var(--encre); margin: 0 0 var(--e-2); line-height: 1.2; }
+h1 { font-size: var(--t-xl); flex: 1; display: flex; align-items: baseline; gap: var(--e-2); }
+h1 small { font: var(--t-xs) var(--mono); color: var(--encre-2); }
+h2 { font-size: var(--t-2xl); } h3 { font-size: var(--t-xl); margin-top: var(--e-5); }
+p { margin: 0 0 var(--e-2); } small { color: var(--encre-2); font-size: var(--t-s); display: block; }
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 3px solid var(--encre); outline-offset: 2px; }
+.lecteur { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+header { display: flex; align-items: center; gap: var(--e-3); padding: var(--e-3) var(--e-4); padding-top: max(var(--e-3), env(safe-area-inset-top)); background: var(--plateau); border-bottom: var(--trait-l) solid var(--trait); }
+.chip { font: var(--t-s) var(--mono); border: var(--trait-l) solid var(--trait); border-radius: var(--r-p); padding: 2px var(--e-3); color: var(--encre); background: var(--surface); }
+.icone { width: var(--cible); height: var(--cible); display: grid; place-items: center; border: var(--trait-l) solid var(--trait); border-radius: var(--r-p); background: var(--surface); color: var(--encre); }
+#corps { flex: 1; min-height: 0; display: flex; flex-direction: column-reverse; }
+#onglets { display: flex; border-top: var(--trait-l) solid var(--trait); background: var(--plateau); padding-bottom: env(safe-area-inset-bottom); }
+#onglets button { flex: 1; min-height: var(--cible); display: grid; justify-items: center; gap: 2px; padding: var(--e-2) 0; background: none; border: 0; color: var(--encre-2); font-size: var(--t-xs); }
+#onglets button[aria-selected="true"] { color: var(--encre); font-weight: 700; box-shadow: inset 0 3px 0 var(--encre); }
+#vue { flex: 1; min-height: 0; overflow-y: auto; padding: var(--e-4); max-width: 60rem; width: 100%; margin: 0 auto; }
+#vue[data-vue="parler"] { display: flex; flex-direction: column; overflow: hidden; }
+.outils { display: flex; flex-wrap: wrap; gap: var(--e-2); margin-bottom: var(--e-3); }
+.puce, button.principal, button.petit, .bouton, #vue button:not(.ligne):not(.rond):not(.petit):not(.puce):not(.principal) { min-height: var(--cible); padding: 0 var(--e-4); border: var(--trait-l) solid var(--trait); border-radius: var(--r-p); background: var(--surface); color: var(--encre); }
+.puce { min-height: 40px; font-size: var(--t-m); } .puce.doute { border-style: dashed; }
+button.principal { background: var(--plein); color: var(--sur-plein); font-weight: 600; }
+button.principal:disabled { opacity: .45; cursor: default; }
+button.petit { min-height: 36px; font-size: var(--t-s); padding: 0 var(--e-3); }
+.bouton { display: inline-grid; align-items: center; cursor: pointer; }
+#flux { flex: 1; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; gap: var(--e-3); padding: var(--e-2) 0; }
+.bulle { max-width: 85%; padding: var(--e-3) var(--e-4); border: var(--trait-l) solid var(--trait); border-radius: var(--r-m); background: var(--surface); box-shadow: var(--sh-1); overflow-wrap: anywhere; }
+.bulle p { margin: 0; white-space: pre-wrap; } .bulle .qui { font: 600 var(--t-xs) var(--mono); color: var(--encre-2); display: block; margin-bottom: 2px; }
+.bulle.moi { align-self: flex-end; background: var(--pale); } .bulle.systeme { align-self: center; border-style: dashed; font-size: var(--t-m); }
+.bulle.attente { opacity: .8; font-style: italic; } .bulle .sources { font-size: var(--t-s); margin-top: var(--e-2); }
+.vide { color: var(--encre-2); list-style: none; }
+.saisie { display: flex; align-items: flex-end; gap: var(--e-2); padding-top: var(--e-2); }
+.saisie textarea { flex: 1; min-height: var(--cible); max-height: 30vh; resize: vertical; padding: var(--e-2) var(--e-3); border: var(--trait-l) solid var(--trait); border-radius: var(--r-m); background: var(--surface); }
+.rond { width: var(--cible); height: var(--cible); flex: none; display: grid; place-items: center; border: var(--trait-l) solid var(--trait); border-radius: var(--r-p); background: var(--surface); color: var(--encre); }
+.rond.principal { background: var(--plein); color: var(--sur-plein); }
+.compteur { text-align: right; }
+.champ { display: grid; gap: 2px; margin: var(--e-2) 0; } .champ label { font-size: var(--t-s); color: var(--encre-2); }
+.champ input, .champ textarea, .champ select, select, .liste input[type="text"], .liste textarea { min-height: var(--cible); padding: var(--e-2) var(--e-3); border: var(--trait-l) solid var(--trait-doux); border-radius: var(--r-s); background: var(--surface); width: 100%; }
+.grille { display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: var(--e-2) var(--e-3); }
+.rang { display: flex; flex-wrap: wrap; gap: var(--e-2); align-items: end; margin: var(--e-2) 0; }
+.liste { list-style: none; margin: 0 0 var(--e-3); padding: 0; display: grid; gap: var(--e-2); }
+.liste > li { border: var(--trait-l) solid var(--trait-doux); border-radius: var(--r-m); padding: var(--e-3); background: var(--surface); display: grid; gap: var(--e-1); }
+.liste > li.fait label { text-decoration: line-through; color: var(--encre-2); }
+.liste > li.vide { border-style: dashed; }
+button.ligne { display: grid; gap: 2px; text-align: left; width: 100%; background: none; border: 0; padding: 0; min-height: var(--cible); }
+.etiq { font: var(--t-xs) var(--mono); color: var(--encre-2); }
+.carte { border: var(--trait-l) solid var(--trait); border-radius: var(--r-m); background: var(--plateau); padding: var(--e-3) var(--e-4); margin: var(--e-3) 0; box-shadow: var(--sh-1); }
+.carte h3 { margin-top: 0; }
+.ecart { font-weight: 600; color: var(--encre); }
+.jauge { height: 10px; border: var(--trait-l) solid var(--trait); border-radius: var(--r-p); overflow: hidden; background: var(--surface); } .jauge i { display: block; height: 100%; background: var(--plein); }
+table { border-collapse: collapse; width: 100%; font-size: var(--t-m); margin: var(--e-2) 0; } caption { text-align: left; font-weight: 600; padding-bottom: var(--e-1); }
+th, td { border-bottom: 1px solid var(--trait-doux); padding: var(--e-1) var(--e-2); text-align: left; } td input { min-height: 36px; width: 100%; }
+details { margin-top: var(--e-2); } summary { cursor: pointer; min-height: var(--cible); display: flex; align-items: center; color: var(--encre); font-weight: 600; }
+.meteo-grande { display: flex; gap: var(--e-4); align-items: center; border: var(--trait-l) solid var(--trait); border-radius: var(--r-m); padding: var(--e-3) var(--e-4); background: var(--surface); }
+.avert { border-left: 4px solid var(--veille); padding-left: var(--e-3); color: var(--texte); } .aide { color: var(--encre-2); font-size: var(--t-m); }
+.lettre { white-space: pre-wrap; } .rebours { font-size: var(--t-xl); color: var(--encre); font-weight: 600; }
+.frise { list-style: none; margin: var(--e-3) 0; padding: 0 0 0 var(--e-4); border-left: 3px solid var(--trait); display: grid; gap: var(--e-3); }
+.frise li { position: relative; display: flex; flex-wrap: wrap; gap: var(--e-2); align-items: baseline; } .frise li::before { content: ""; position: absolute; left: calc(-1 * var(--e-4) - 7px); top: .55em; width: 11px; height: 11px; border-radius: 50%; border: var(--trait-l) solid var(--trait); background: var(--fond); }
+.frise li.passe { color: var(--encre-2); } .frise li.passe::before { background: var(--trait-doux); } .frise li.futur::before { border-style: dashed; }
+.frise li.auj::before, .frise li.cap::before { background: var(--plein); } .frise .date { font: var(--t-s) var(--mono); min-width: 9rem; }
+.case { display: flex; gap: var(--e-2); align-items: center; min-height: var(--cible); } .case input { width: 22px; height: 22px; }
+.version { font: var(--t-xs) var(--mono); color: var(--encre-2); }
+dialog { width: min(34rem, calc(100vw - 2rem)); max-height: 90vh; overflow-y: auto; border: var(--trait-l) solid var(--trait); border-radius: var(--r-m); background: var(--fond); color: var(--texte); padding: var(--e-4); box-shadow: var(--sh-3); }
+dialog::backdrop { background: rgba(0, 20, 60, .45); } dialog menu { display: flex; gap: var(--e-2); justify-content: flex-end; padding: 0; margin: var(--e-3) 0 0; flex-wrap: wrap; }
+#maj { position: fixed; left: var(--e-4); right: var(--e-4); bottom: calc(var(--e-4) + 64px); min-height: var(--cible); border: var(--trait-l) solid var(--trait); border-radius: var(--r-p); background: var(--plein); color: var(--sur-plein); }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+/* ===== App ordinateur ===== */
+@media (min-width: 900px) and (pointer: fine) {
+  #corps { flex-direction: row; }
+  #onglets { flex-direction: column; align-content: flex-start; width: 11rem; border-top: 0; border-right: var(--trait-l) solid var(--trait); padding: var(--e-3) 0; }
+  #onglets button { flex: none; grid-auto-flow: column; justify-content: start; gap: var(--e-3); padding: 0 var(--e-4); font-size: var(--t-m); }
+  #onglets button[aria-selected="true"] { box-shadow: inset 4px 0 0 var(--encre); }
+  #vue { padding: var(--e-5); } .bulle { max-width: 70%; } #maj { bottom: var(--e-4); left: auto; right: var(--e-4); padding: 0 var(--e-4); }
+}

@@ -1,0 +1,25 @@
+/* Écran « Connexion » commun (Ma carte de vie, LIFE, Coulisses) : un QR, et la saisie à la main. Fichier identique dans les trois apps ;
+   couleurs reprises de l'app hôte quand elle les définit (--cx-texte, --cx-fond, --cx-accent) ; sinon valeurs sobres, contraste suffisant. */
+/* ===== App téléphone ===== */
+.cx { color: var(--cx-texte, inherit); font: inherit; }
+.cx .cx-titre { margin: 0 0 .5rem; font-size: 1.15rem; }
+.cx .cx-bloc { margin: 0 0 1rem; padding: 0 0 .25rem; border: 0; }
+.cx .cx-sous { margin: .25rem 0; font-size: 1rem; }
+.cx .cx-aide { margin: .25rem 0 .75rem; font-size: .9rem; line-height: 1.4; color: var(--cx-texte, inherit); }
+.cx .cx-groupe { margin: 0 0 .75rem; padding: .4rem .7rem .6rem; border: 1px solid var(--cx-trait, rgba(128,128,128,.35)); border-radius: .6rem; min-inline-size: 0; }
+.cx .cx-legende { padding: 0 .3rem; font-weight: 600; font-size: .95rem; }
+.cx .cx-label { display: block; margin-top: .5rem; font-size: .9rem; }
+.cx .cx-btn { min-height: 44px; padding: .55rem .9rem; border-radius: .6rem; border: 1px solid var(--cx-accent, #1f5f7a); background: var(--cx-accent, #1f5f7a);
+  color: var(--cx-sur-accent, #fff); font: inherit; font-weight: 600; cursor: pointer; width: 100%; }
+.cx .cx-btn:focus-visible, .cx .cx-champ:focus-visible { outline: 3px solid var(--cx-focus, #f2a900); outline-offset: 2px; }
+.cx .cx-champ { box-sizing: border-box; width: 100%; min-height: 44px; padding: .5rem .7rem; margin: .25rem 0; border-radius: .6rem; font: inherit;
+  border: 1px solid var(--cx-trait, rgba(128,128,128,.6)); background: var(--cx-fond, transparent); color: var(--cx-texte, inherit); }
+.cx .cx-plus { margin: .4rem 0; display: grid; justify-items: center; gap: .4rem; }
+.cx .cx-qr { width: min(248px, 70vw); height: auto; background: #fff; padding: 8px; border-radius: .5rem; image-rendering: pixelated; }
+.cx .cx-etat { min-height: 1.3em; margin: .4rem 0; font-size: .9rem; }
+/* ===== App ordinateur ===== */
+@media (min-width: 900px) and (pointer: fine) {
+  .cx .cx-btn { width: auto; min-height: 38px; }
+  .cx .cx-champ { max-width: 32rem; }
+  .cx .cx-plus { justify-items: start; }
+}

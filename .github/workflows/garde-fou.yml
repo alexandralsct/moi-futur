@@ -1,0 +1,16 @@
+name: Garde-fou
+on: [push, pull_request]
+jobs:
+  garde-fou:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - name: Contenu du dépôt (liste blanche, secrets, adresses, mots privés)
+        env:
+          MOTS: ${{ secrets.MOTS_INTERDITS }}
+        run: bash tests/garde-fou.sh
+      - name: Historique
+        env:
+          MOTS: ${{ secrets.MOTS_INTERDITS }}
+        run: bash tests/garde-fou.sh --historique
